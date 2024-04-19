@@ -6,11 +6,16 @@ import org.example.enums.CardStatus;
 import org.example.repository.CardRepository;
 import org.example.repository.ProfileCardRepository;
 import org.example.repository.ProfileRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class CardService {
+    @Autowired
     private CardRepository cardRepository;
+    @Autowired
     private ProfileCardRepository profileCardRepository;
 
     public void createCard(CardDTO card) {
@@ -145,12 +150,5 @@ public class CardService {
         CardDTO companyCard = cardRepository.getCompanyCard();
         Long balance = companyCard.getBalance();
         System.out.println("Balance: " + balance);
-    }
-
-    public void setCardRepository(CardRepository cardRepository) {
-        this.cardRepository = cardRepository;
-    }
-    public void setProfileCardRepository(ProfileCardRepository profileCardRepository) {
-        this.profileCardRepository = profileCardRepository;
     }
 }

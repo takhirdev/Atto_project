@@ -3,11 +3,13 @@ package org.example.repository;
 import org.example.dto.CardDTO;
 import org.example.enums.CardStatus;
 import org.example.util.DataBaseConnection;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.sql.*;
 import java.util.LinkedList;
 import java.util.List;
-
+@Repository
 public class CardRepository {
     public void createCard(CardDTO card) {
         Connection connection = null;

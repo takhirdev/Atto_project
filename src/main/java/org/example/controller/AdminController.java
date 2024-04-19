@@ -7,16 +7,24 @@ import org.example.service.CardService;
 import org.example.service.ProfileService;
 import org.example.service.TerminalService;
 import org.example.service.TransactionService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 
 import java.time.LocalDate;
 import java.util.Scanner;
-
+@Controller
+@Scope("singleton")
 public class AdminController {
-
     private Scanner scanner = new Scanner(System.in);
+    @Autowired
     private CardService cardService;
+    @Autowired
     private TerminalService terminalService;
+    @Autowired
     private ProfileService profileService ;
+    @Autowired
     private TransactionService transactionService;
 
     public void start() {
@@ -256,21 +264,5 @@ public class AdminController {
 
     public void companyCardBalance() {
         cardService.getCompanyBalance();
-    }
-
-    public void setCardService(CardService cardService) {
-        this.cardService = cardService;
-    }
-
-    public void setTerminalService(TerminalService terminalService) {
-        this.terminalService = terminalService;
-    }
-
-    public void setProfileService(ProfileService profileService) {
-        this.profileService = profileService;
-    }
-
-    public void setTransactionService(TransactionService transactionService) {
-        this.transactionService = transactionService;
     }
 }

@@ -3,11 +3,17 @@ package org.example.service;
 import org.example.dto.TerminalDTO;
 import org.example.enums.TerminalStatus;
 import org.example.repository.TerminalRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class TerminalService {
+    @Autowired
     private TerminalRepository terminalRepository;
+
     public void create(TerminalDTO terminal) {
         if (!terminalNumberIsValid(terminal.getCode())){
             System.out.println("Terminal code is wrong! Mazgi...");
@@ -76,9 +82,5 @@ public class TerminalService {
             }
         }
         return true;
-    }
-
-    public void setTerminalRepository(TerminalRepository terminalRepository) {
-        this.terminalRepository = terminalRepository;
     }
 }

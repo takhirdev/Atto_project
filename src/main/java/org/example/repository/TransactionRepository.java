@@ -3,12 +3,14 @@ package org.example.repository;
 import org.example.dto.TransactionDTO;
 import org.example.enums.TransactionType;
 import org.example.util.DataBaseConnection;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
-
+@Repository
 public class TransactionRepository {
 
     public List<TransactionDTO> getUserTransaction(Integer cardId) {

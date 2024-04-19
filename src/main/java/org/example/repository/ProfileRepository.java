@@ -5,6 +5,8 @@ import org.example.dto.ProfileDTO;
 import org.example.enums.ProfileRole;
 import org.example.enums.ProfileStatus;
 import org.example.util.DataBaseConnection;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,7 +14,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
-
+@Repository
 public class ProfileRepository {
     public void registration(ProfileDTO profileDTO) {
         Connection connection = null;

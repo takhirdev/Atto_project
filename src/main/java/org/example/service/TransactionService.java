@@ -10,15 +10,32 @@ import org.example.repository.CardRepository;
 import org.example.repository.ProfileCardRepository;
 import org.example.repository.TerminalRepository;
 import org.example.repository.TransactionRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
-
+@Service
 public class TransactionService {
+    @Autowired
     private CardRepository cardRepository;
+    @Autowired
     private ProfileCardRepository profileCardRepository;
+    @Autowired
     private TerminalRepository terminalRepository;
+    @Autowired
     private TransactionRepository transactionRepository;
+
+    public TransactionService(CardRepository cardRepository,
+                              ProfileCardRepository profileCardRepository,
+                              TerminalRepository terminalRepository,
+                              TransactionRepository transactionRepository) {
+        this.cardRepository = cardRepository;
+        this.profileCardRepository = profileCardRepository;
+        this.terminalRepository = terminalRepository;
+        this.transactionRepository = transactionRepository;
+    }
 
     public void getUserTransaction(ProfileDTO profile) {
 
@@ -176,21 +193,5 @@ public class TransactionService {
         for (TransactionDTO transaction : transactionList) {
             System.out.printf("| %-20s | %-15s | %-10s | %-25s | %-10s |\n", transaction.getCardNumber(), transaction.getTerminalAddress(), transaction.getAmount(), transaction.getTransactionDate(), transaction.getType());
         }
-    }
-
-    public void setCardRepository(CardRepository cardRepository) {
-        this.cardRepository = cardRepository;
-    }
-
-    public void setProfileCardRepository(ProfileCardRepository profileCardRepository) {
-        this.profileCardRepository = profileCardRepository;
-    }
-
-    public void setTerminalRepository(TerminalRepository terminalRepository) {
-        this.terminalRepository = terminalRepository;
-    }
-
-    public void setTransactionRepository(TransactionRepository transactionRepository) {
-        this.transactionRepository = transactionRepository;
     }
 }

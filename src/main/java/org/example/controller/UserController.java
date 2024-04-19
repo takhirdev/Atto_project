@@ -4,13 +4,20 @@ import org.example.container.ComponentContainer;
 import org.example.dto.ProfileDTO;
 import org.example.service.CardService;
 import org.example.service.TransactionService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 
 import java.util.Scanner;
-
+@Controller
+@Scope("singleton")
 public class UserController {
     private ProfileDTO profile = ComponentContainer.currentProfile;
     Scanner scanner = new Scanner(System.in);
+    @Autowired
     private CardService cardService;
+    @Autowired
     private TransactionService transactionService;
 
     public void start() {
@@ -103,11 +110,4 @@ public class UserController {
         transactionService.getUserTransaction(profile);
     }
 
-    public void setCardService(CardService cardService) {
-        this.cardService = cardService;
-    }
-
-    public void setTransactionService(TransactionService transactionService) {
-        this.transactionService = transactionService;
-    }
 }

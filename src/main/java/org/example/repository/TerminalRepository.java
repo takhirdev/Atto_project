@@ -3,6 +3,8 @@ package org.example.repository;
 import org.example.dto.TerminalDTO;
 import org.example.enums.TerminalStatus;
 import org.example.util.DataBaseConnection;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,7 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
-
+@Repository
 public class TerminalRepository {
     public void create(TerminalDTO terminal) {
         Connection connection = null;

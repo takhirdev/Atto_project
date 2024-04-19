@@ -9,13 +9,20 @@ import org.example.enums.ProfileStatus;
 import org.example.repository.ProfileCardRepository;
 import org.example.repository.ProfileRepository;
 import org.example.util.MD5Util;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class ProfileService {
+    @Autowired
     private ProfileRepository profileRepository;
+    @Autowired
     private ProfileCardRepository profileCardRepository;
+    @Autowired
     private AdminController adminController;
+    @Autowired
     private UserController userController;
     public void registration(ProfileDTO profile) {
 
@@ -106,21 +113,5 @@ public class ProfileService {
             return true;
         }
         return false;
-    }
-
-    public void setProfileRepository(ProfileRepository profileRepository) {
-        this.profileRepository = profileRepository;
-    }
-
-    public void setProfileCardRepository(ProfileCardRepository profileCardRepository) {
-        this.profileCardRepository = profileCardRepository;
-    }
-
-    public void setAdminController(AdminController adminController) {
-        this.adminController = adminController;
-    }
-
-    public void setUserController(UserController userController) {
-        this.userController = userController;
     }
 }

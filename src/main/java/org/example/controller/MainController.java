@@ -6,13 +6,21 @@ import org.example.service.ProfileService;
 import org.example.service.TransactionService;
 import org.example.util.DatabaseUtill;
 import org.example.util.MD5Util;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Controller;
 import java.util.Scanner;
-
+@Controller
+@Scope("singleton")
 public class MainController {
     private Scanner scanner = new Scanner(System.in);
+    @Autowired
     private ProfileService profileService;
+    @Autowired
     private TransactionService transactionService;
-    public void start() {
+
+
+    public void start(){
         DatabaseUtill.createTable();
         DatabaseUtill.initAdmin();
         boolean a = true;
@@ -36,7 +44,6 @@ public class MainController {
                     System.out.println("Wrong action! Mazgi.......");
             }
         }
-
     }
 
     public void showMenu() {
@@ -89,14 +96,5 @@ public class MainController {
         String terminalCode = scanner.nextLine();
 
         transactionService.payment(cardNumber,terminalCode);
-
-    }
-
-    public void setProfileService(ProfileService profileService) {
-        this.profileService = profileService;
-    }
-
-    public void setTransactionService(TransactionService transactionService) {
-        this.transactionService = transactionService;
     }
 }
